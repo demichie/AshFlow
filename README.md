@@ -1,19 +1,18 @@
-## Welcome to IMEX_SfloW2D
+## Welcome to AshFlow
+
+FlowModel is a numerical code for the steady-state ash flow model, describing the propagation of a mixture of entrained air and volcanic ash with distance from source during an eruption. The system of equations is formally the same of that presented in Bursik and Woods 1996, i.e. the equations we formulate describe the same conservation principles (conservation of mass, momentum and energy). In this model, the specific heat and gas constant of the flow are solved at each iteration.
 
 
-IMEX_SfloW is a FORTRAN90 code designed to solve the shallow water equations, written as a hyperbolic system of partial differential equations with relaxation and source terms. The model is discretized in time with an explicit-implicit Runge-Kutta method where the hyperbolic part is solved explicetely and the other terms are treated implicitely. The finite volume solver for the hyperbolic part of the system is based on a semidiscrete central scheme and it is not tied on the specific eigenstructure of the model. The implicit part is solved with a Newton-Raphson method where the elements of the Jacobian of the nonlinear system are evaluated numerically with a complex step derivative technique.
 
 ### Authors and Contributors
 
-Mattia de' Michieli Vitturi (@demichie)
+Samantha Engwell
 
-Giacomo Lari
+Mattia de' Michieli Vitturi (@demichie)
 
 ### Installation and execution
 
-Check first if you have the LAPACK library installed on your system.
-
-Download the IMEX_SfloW package and create the executable with the following commands from a terminal:
+Download the AshFlow package and create the executable with the following commands from a terminal:
 
 >./configure
 >
@@ -27,13 +26,13 @@ This will create the executable and copy it in the bin folder. You can test the 
 
 A wiki page describing the model is available at:
 
-[https://github.com/demichie/IMEX_SfloW2D/wiki](https://github.com/demichie/IMEX_SfloW2D/wiki) 
+[https://github.com/demichie/AshFlow/wiki](https://github.com/demichie/AshFlow/wiki) 
 
 Doxygen generated documentation of the code can be found at:
 
-[http://demichie.github.io/IMEX_SfloW2D/html/](http://demichie.github.io/IMEX_SfloW2D/html/) 
+[http://demichie.github.io/AshFlow/html/](http://demichie.github.io/AshFlow/html/) 
 
 
 ### References
 
-M. de’ Michieli Vitturi, 2016.
+Engwell, S. L.; de' Michieli Vitturi, M.; Ongaro, T. E. & Neri, A. Insights into the formation and dynamics of coignimbrite plumes from one-dimensional models J. Geophys. Res. Solid Earth, Wiley-Blackwell, 2016, 121
