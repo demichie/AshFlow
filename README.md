@@ -1,6 +1,6 @@
 ## Welcome to AshFlow
 
-FlowModel is a numerical code for the steady-state ash flow model, describing the propagation of a mixture of entrained air and volcanic ash with distance from source during an eruption. The system of equations is formally the same of that presented in Bursik and Woods 1996, i.e. the equations we formulate describe the same conservation principles (conservation of mass, momentum and energy). In this model, the specific heat and gas constant of the flow are solved at each iteration.
+AshFlow is a numerical code for the steady-state ash flow model, describing the propagation of a mixture of entrained air and volcanic ash with distance from source during an eruption. The system of equations is formally the same of that presented in Bursik and Woods 1996, i.e. the equations we formulate describe the same conservation principles (conservation of mass, momentum and energy). In this model, the specific heat and gas constant of the flow are solved at each iteration.
 
 
 
