@@ -2,4 +2,3 @@ theme: jekyll-theme-slate
 show_downloads: "true"
 title: AshFlow
 description: Steady state ash flow model
-google_analytics: UA-89749605-1
