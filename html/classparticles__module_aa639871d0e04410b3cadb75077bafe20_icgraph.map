@@ -1,0 +1,5 @@
+<map id="particles_module::cdf" name="particles_module::cdf">
+<area shape="rect" id="node2" href="$classparticles__module.html#a629e094ac337ae71923a60ab01b1167c" title="Allocating particles variables This subroutine allocates the variables defining the particle sediment..." alt="" coords="201,23,375,65"/>
+<area shape="rect" id="node3" href="$classpdcflow.html#a4568d9ab03693c6eee76ee1d77c1b775" title="PDC run_name This subroutine calls all subroutines required from other modules for solving the model..." alt="" coords="427,5,523,32"/>
+<area shape="rect" id="node4" href="$classinpout.html#ae8f85b08dc2bdecff9c3b611fc347425" title="Read Input data This subroutine reads input data from the file flow_model.inp. " alt="" coords="425,56,525,83"/>
+</map>
