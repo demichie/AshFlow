@@ -93,8 +93,6 @@ CONTAINS
 
     n = SIZE( f,2 )
 
-    !    WRITE(*,*) 'tools,interp1D',x,n
-
     !
     !***  x is equal or lower than the first point 
     !
@@ -145,8 +143,6 @@ CONTAINS
     i = 1
 
     DO WHILE (search)
-
-       !       WRITE(*,*) i,x,x0,x1
 
        i  = i+1
        x0 = f(1,i  )

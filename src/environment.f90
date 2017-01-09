@@ -17,7 +17,9 @@ MODULE envi_module
   REAL*8 :: gi		!< Gravitational acceleration 
   REAL*8 :: alpha       	!< Atmospheric density
   REAL*8 :: T_a      	!< Atmospheric temperature
-  REAL*8 :: p	!< Atmospheric pressure        
+  REAL*8 :: p	!< Atmospheric pressure  
+  REAL*8 :: gas_constair !< perfect gas constant of ambient air ( J/(kg K) )
+  REAL*8 :: C_vair !< specific heat ambient air ( J/(kg K) )       
   !
   SAVE
 
@@ -29,39 +31,11 @@ CONTAINS
 !******************************************************************************
 
   SUBROUTINE zmet
-
-    ! External variables
-    USE gas_module, ONLY: gas_constair
-    USE current_module, ONLY: MARS_ATM
        
     IMPLICIT NONE
-
-    IF (MARS_ATM) THEN
-
-       !gi = 3.711D0
-       !T_a = 237.D0
-       !p = 636.D0
-       !alpha = 0.0168D0
-       
-! Ancient Mars
-       gi = 3.711D0
-       T_a = 288.D0
-       p = 20000.D0      
-       alpha = 0.4D0
-       
-    ELSE   
-
-! Earth conditions
-       gi = 9.81D0
-       T_a = 288.D0
-       p = 100000.D0
-       alpha = p/(gas_constair*T_a) !< Calculating atmospheric density
-       
-       !WRITE(*,*) 'gi, ta, p, alpha, gas_constair',        gi, T_a, p, alpha, gas_constair
-       !READ(*,*)
-       
-    END IF
-
+    
+    alpha = p/(gas_constair*T_a)
+    
     RETURN
 
   END SUBROUTINE zmet

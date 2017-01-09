@@ -11,8 +11,8 @@ MODULE solver_module
   USE particles_module, ONLY: iclass
   USE current_module
   USE mixture_module
-  USE envi_module, ONLY: p, T_a, gi
-  USE gas_module, ONLY: gas_constair, C_vair
+  USE envi_module, ONLY: p, T_a, gi, gas_constair, C_vair
+
   !
   IMPLICIT NONE
   !
@@ -86,7 +86,6 @@ CONTAINS
     RETURN
   END SUBROUTINE allocate_matrix
 
-
   !*****************************************************************************
   !> \brief Right hand side equations
   !> This subroutine contains the right-hand side of the equations 
@@ -140,7 +139,7 @@ CONTAINS
     S(1:iclass) = 1.D0 / (h * u) * solidmassflux_fract(1:iclass) * v_s(1:iclass)
 
     sumsed = SUM(S(1:iclass)) ! sum of sedimentation across all particles sizes
-
+    
     !---- Mass conservation of the mixture   (Eq.1 Bursik & Woods 1996)
 
     entrainment_rate = epsilon * alpha * u * var
@@ -243,8 +242,7 @@ CONTAINS
 
     ! External variables
     USE envi_module, ONLY: p
-    USE gas_module, ONLY: cpwvapour
-    USE mixture_module, ONLY: C_vmix
+    USE mixture_module, ONLY: C_vmix, cpwvapour
     USE particles_module, ONLY: fracsolid, iclass
 
     IMPLICIT NONE
@@ -282,7 +280,6 @@ CONTAINS
     RETURN
   END SUBROUTINE lump
 
-
   !******************************************************************************
   !> \brief Marching r one step
   !
@@ -313,7 +310,6 @@ CONTAINS
     RETURN
 
   END SUBROUTINE marching
-
 
   !*****************************************************************************
   !> \brief Unlumping variable
@@ -365,9 +361,6 @@ CONTAINS
     
     beta = ( 1.D0 - C2*C4 ) / ( C2*C3 + C1 )
     T = C4 / beta + C3
-    
-    !WRITE(*,*) 'rhogas', 1.0/(C2*T/n)
-    !WRITE(*,*) 'n, T, gasconstmix, p',n, T, gas_constmix, p
 
     h = f_(1) / (beta * u * var)
 

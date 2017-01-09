@@ -101,13 +101,13 @@ CONTAINS
 
   SUBROUTINE reainp
 
-    USE current_module, ONLY: oneD_model , h0, r0, TVENT_FLAG, T0, MARS_ATM  
+    USE current_module, ONLY: oneD_model , h0, r0, TVENT_FLAG, T0 
 
-    USE envi_module, ONLY: fric, theta   
+    USE envi_module, ONLY: fric, theta, gi, T_a, p, gas_constair, C_vair
 
     USE solver_module, ONLY: vel_equation , dr0 , eps_rel , eps_abs
 
-    USE mixture_module, ONLY: nmag, N, Ri
+    USE mixture_module, ONLY: nmag, N, Ri, cpwvapour, rwvapour
     
     USE particles_module, ONLY: iclass, diam, rhosol, fracsolid, C_d , mean_phi,&
          sigma_phi , min_phi , max_phi , C_d_input , phi_dist
@@ -131,7 +131,7 @@ CONTAINS
 
     NAMELIST / flow_parameters /  oneD_model , vel_equation , dr0 , eps_rel , eps_abs
 
-    NAMELIST / env_parameters /  MARS_ATM, fric, theta
+    NAMELIST / env_parameters /  fric, theta, gi, T_a, P, gas_constair, c_vair, rwvapour, cpwvapour  
 
     NAMELIST / initial_values / r0, h0, Ri, TVENT_FLAG, T0, n, nmag , eval_gsd_flag
 
@@ -345,8 +345,6 @@ CONTAINS
     DO i=1,iclass
     
     	ustar = (u * k) / LOG(50 * H_bl /diam(i))
-    	!WRITE(*,*) 'ustar', ustar
-    	!READ(*,*) 
     	
  		! Accumulation rate
  		
@@ -361,13 +359,12 @@ CONTAINS
          eta0 = H_bl/h 
     
         ! Brunt-Vaisala Frequency
-        
     
     		DO j = 1,final
     
         		eta(j) =  0.1D0 * (j)                                                 ! Non-dimensionless height in the flow, between 0 and 1
         		
-        		SS0(j) = (eta0 / (1 - eta0)) * ((1 - eta(j)) / eta(j)) ** Pn			!Non-dimensionalised concentration profile: Equation 4 from Valentine 1987
+        		SS0(j) = (eta0 / (1 - eta0)) * ((1 - eta(j)) / eta(j)) ** Pn			! Non-dimensionalised concentration profile: Equation 4 from Valentine 1987
         	    
         	    BV(j) = (1/(2 * pi)) * (( gi / h ) * ( Pn / (eta(j) *(1-eta(j))))) ** 0.5   !Brunt-Vaisala Frequency as a function on non-dimensional height in the flow, equation 8 in Valentine 1987 
     
@@ -397,12 +394,12 @@ CONTAINS
     WRITE(51,100) r , h , u , T , beta , solid_mass_flux , sumsed , Ri ,        &
          epsilon , volume_flux , n, Pdyn   
      
-    WRITE(54,155) r , mean_grainsize, std_dev
+    !WRITE(54,155) r , mean_grainsize, std_dev
     
     WRITE(56,156) r , entrainment_rate
          
-    !WRITE(54,155) r , h , u , v_s , beta, Pn, wavelengthfreen, wavelengthshearn, 		&
-    !wavelengthfreex, wavelengthshearx, wavelength_height, Acc_rate
+    WRITE(54,155) r , h , u , v_s , beta, Pn, wavelengthfreen,		&
+ 			wavelength_height, Acc_rate
     
     WRITE(52,177) r , fracsolid
 
@@ -410,10 +407,10 @@ CONTAINS
 100 FORMAT(f12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,         &
          1x,e12.5,1x,e12.5, 1x,e12.5, 1x,e12.5, 1x,e12.5)
          
-155 FORMAT(f12.5,1x,e12.5,1x,e12.5,1x)
+!155 FORMAT(f12.5,1x,e12.5,1x,e12.5,1x)
          
-!155 FORMAT(f12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,         &
-!         1x,e12.5,1x,e12.5, 1x,e12.5, 1x,e12.5, 1x,e12.5)
+155 FORMAT(f12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,1x,e12.5,         &
+         1x,e12.5,1x,e12.5)
   
 156 FORMAT(f12.5,1x,e12.5)
     
@@ -435,7 +432,7 @@ CONTAINS
 	INTEGER :: i
 	CHARACTER(len=8) :: x1
 
-    WRITE(53,*) 'initial mass flux', Initial_MF
+    WRITE(53,*) 'initial mass flux', LOG10(Initial_MF)
     WRITE(53,*) 'initial_velocity', initial_velocity
     WRITE(53,*) 'initial_density', initial_density
     WRITE(53,*) 'solidvolumefraction', solidvolumefraction
@@ -448,7 +445,6 @@ CONTAINS
     WRITE(53,*) 'Ri', ri
     WRITE(53,*) 'Flow Height', h
     WRITE(53,*) 'Flow Regime', flow_regime
-    !WRITE(53,*) 'Mean Grainsize', mean_grainsize
     WRITE(53,*) 'Solid Mass Fraction', 1-N
     WRITE(53,*) 'Final Mass Flux', mass_flux
     WRITE(53,*) 'Initial Plume Velocity', plume_velocity
@@ -460,6 +456,7 @@ CONTAINS
     WRITE(53,*) 'final_smflux', final_solid_mass_flux
     WRITE(53,*) 'initial_smflux', initial_SMF
     WRITE(53,*) 'solidMF_ratio', solidMF_ratio
+    WRITE(53,*) 'alpha', alpha
     
     
 	 DO i = 1, iclass

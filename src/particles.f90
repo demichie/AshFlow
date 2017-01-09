@@ -32,9 +32,6 @@ MODULE particles_module
   !> Mean used to produce grainsize distribution
   REAL*8 :: mean_phi
 
-  !> Maximum number of classes of particles that can be used
-  ! INTEGER, PARAMETER :: maxiclass = 20
-
   !> Mass fraction of the particle phases with respect to the total solid
   REAL*8, ALLOCATABLE, DIMENSION(:) :: fracsolid 
   
@@ -71,7 +68,7 @@ MODULE particles_module
   !> Total Accumulation Rate
   REAL*8 :: Total_Acc_rate
   
-    !> Rouse number
+  !> Rouse number
   REAL*8 :: Pn
 
   !> Von Karmans constant (See Valentine 1987)
@@ -188,8 +185,6 @@ CONTAINS
        
        phi_left = phi_right
 
-       !WRITE(*,*) i , phi_dist(i) , diam(i) , rhosol(i) , C_d(i)   
-
     END DO
 
     left_tail_fract= cdf(min_phi)
@@ -208,11 +203,6 @@ CONTAINS
     END IF
 
     fracsolid(1:no_bins) = fracsolid(1:no_bins)/sum(fracsolid(1:no_bins))
-
-    !init_fracsolid(i) = fracsolid(i)
-    !WRITE(*,*) 'init_fracsolid', init_fracsolid
-    !READ(*,*)
-
     
     RETURN
     

@@ -88,7 +88,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_AshFlow_OBJECTS = tools.$(OBJEXT) current.$(OBJEXT) gas.$(OBJEXT) \
+am_AshFlow_OBJECTS = tools.$(OBJEXT) current.$(OBJEXT) \
 	environment.$(OBJEXT) particles.$(OBJEXT) mixture.$(OBJEXT) \
 	solver_flow.$(OBJEXT) inpout.$(OBJEXT) flow.$(OBJEXT) \
 	flow_model.$(OBJEXT)
@@ -231,7 +231,6 @@ AUTOMAKE_OPTIONS = foreign
 AshFlow_SOURCES = \
 		tools.f90 \
         current.f90 \
-        gas.f90 \
         environment.f90 \
         particles.f90 \
         mixture.f90 \

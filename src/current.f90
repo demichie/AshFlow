@@ -35,13 +35,9 @@ MODULE current_module !< provides source conditions for flow
   
   !> Parameter used to evaluate flow thickness for integration; defines thickness at new integration
   REAL*8 :: h_new
-  !
   
   !> Initial thickness of flow (m) provided in input file 
   REAL*8 :: h0      				
-  
-  !> Initial flow velocity (m/s) provided in input file  
-  !REAL*8 :: u0      				!< initial velocity of flow - given in input file
   
   !> Initial flow radius (m) provided in input file  
   REAL*8 :: r0   				!< initial radius of flow  
@@ -54,10 +50,7 @@ MODULE current_module !< provides source conditions for flow
   
   !> Logical flag describing how the initial temperature is determined, true means given in input, if false, calculated in mixture
   LOGICAL :: TVENT_FLAG 
-  
-  !> Logical flag describing how the initial temperature is determined, true means given in input, if false, calculated in mixture
-  LOGICAL :: MARS_ATM
-  
+
   !> Mass flux
   REAL*8 :: mass_flux
   

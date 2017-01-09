@@ -1,34 +1,41 @@
 &CONTROL_PARAMETERS
- RUN_NAME="MOM_Ri0_7_eps_9",
+ RUN_NAME="EARTH"
  /
 &FLOW_PARAMETERS
- ONED_MODEL= .FALSE.,
- VEL_EQUATION = .FALSE.
+ ONED_MODEL= .FALSE.
+ VEL_EQUATION = .TRUE.
  DR0= 100.0,
  EPS_REL = 1.e-9,
  EPS_ABS = 1.e-9,
 /
 &ENV_PARAMETERS
- FRIC= 0.02, ! Friction parameter somewhere between 0.001 and 0.02
+ FRIC= 0.001, ! Friction parameter somewhere between 0.001 and 0.02
  THETA= 0.0, ! slope degrees
+ GI= 9.81D0
+ T_A= 288.D0
+ P= 100000.D0     
+ GAS_CONSTAIR = 287.D0
+ C_VAIR=998.0D0
+ RWVAPOUR=461.D0
+ CPWVAPOUR=1617.D0
  /
 &INITIAL_VALUES
- R0= 2000.0  , ! initial radius (m)
- H0= 1000.0  , ! initial height (m)
- Ri= 20.0, !Richardson Number
+ R0= 100.0  , ! initial radius (m)
+ H0= 50.0  , ! initial height (m)
+ Ri=  0.1 , !Richardson Number
  TVENT_FLAG = .TRUE., !if false temperature given below is the input temperature and the equation in mixture module not used.
- T0 = 1000.0 ,
- N= 0.1, ! Total gas mass fraction in flow, therefore cannot be less than nmag
- nmag= 0.003,  ! volatile mass fraction of magma 
- eval_gsd_flag = .TRUE.,
+ T0 =  900.0,
+ N= 0.0936, ! Total gas mass fraction in flow, therefore cannot be less than nmag
+ nmag= 0.0001,  ! volatile mass fraction of magma 
+ eval_gsd_flag = .FALSE.,
  /
 &DENSITY_PARAMETERS
  diam1 = 5.0D-4 ,
  diam2 = 1.0D-2 ,
- min_rho = 1000.D0 , 
- max_rho = 1000.D0 ,
+ min_rho = 2000.D0 , 
+ max_rho = 2000.D0 ,
  /
 'GRANULOMETRY'
-           21         
-3.2   1.5       -10.0  10.0   1.0  
+           1        
+5.0000000000000001E-004   1500.0      1.0   1.0  
 

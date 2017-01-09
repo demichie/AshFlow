@@ -58,6 +58,12 @@ MODULE mixture_module
   !> Average density of solid phase (kg/m3)
   REAL*8 :: rhosol_ave
   
+  !> perfect gas constant for water vapour ( J/(kg K) )
+  REAL*8 :: rwvapour
+       
+  !> specific heat of water vapour ( J/(kg K) )
+  REAL*8 :: cpwvapour
+  
   REAL*8 :: pi
   
   REAL*8 :: initial_velocity
@@ -95,8 +101,7 @@ CONTAINS
 
   SUBROUTINE compute_mixture
     !
-    USE gas_module, ONLY: cpwvapour, C_vair, rwvapour, gas_constair
-    USE envi_module, ONLY: alpha ,p
+    USE envi_module, ONLY: alpha ,p, C_vair, gas_constair
     USE current_module, ONLY: u, r, h, T, solid_mass_flux, T0, TVENT_FLAG ,     &
          oneD_model, Initial_MF
     USE particles_module, ONLY: rhosol, diam, iclass, fracsolid , v_s, S, C_d , &
@@ -131,23 +136,17 @@ CONTAINS
 
     gas_constmix = rwvapour * nmag_gas + gas_constair * ( 1.D0 - nmag_gas ) 
     
-    !WRITE(*,*) 'nmag_mix, nmag_gas, lambda', nmag_mix, nmag_gas, lambda
-    !WRITE(*,*) 'C_vmix, Cv_magmix, gas_constmix', C_vmix, Cv_magmix, gas_constmix
-    !READ(*,*)
-    
-    ! Calculating the initial temperature using temperature of erupted material 
-    ! if not explicitly defined in input file   
+  
 
     IF (TVENT_FLAG) THEN
 
+       ! Calculating the initial temperature using temperature of erupted material 
+       ! if not explicitly defined in input file 
        ! Initial temperature in the flow based on the eruption temp (eq. 14 in 
        ! Bursik and Woods 96)    
 
        T = ( ( 1.D0 - lambda ) * Cv_magmix * T0 + lambda * C_vair * T_a ) /        &
             ( ( 1.D0 - lambda )* Cv_magmix + lambda * C_vair )
-	
-	!WRITE(*,*) 'T', T
-	!READ(*,*)
 	
     ELSE   
 
@@ -159,9 +158,6 @@ CONTAINS
     rhosol_ave = 1/(SUM(fracsolid/rhosol))
     beta = 1.D0 / ( n / rhogas + ( 1.D0 - n ) / rhosol_ave)
     
-    !WRITE(*,*) 'Density', beta
-    !READ(*,*)
-    
     initial_density = beta
   
     ! Flow velocity
@@ -170,7 +166,7 @@ CONTAINS
 
     ! Defining entrainment conditions          
      epsilon = 0.075D0 / DSQRT( 1.0D0 + 718.0D0 * Ri**2.4D0 )
-
+     
     IF ( oneD_model ) THEN
 
        var = 1.D0

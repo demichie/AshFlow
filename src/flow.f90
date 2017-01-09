@@ -24,7 +24,6 @@ CONTAINS
 
     ! External variables
     USE envi_module, ONLY: zmet, alpha
-    USE gas_module, ONLY: gasvals
     USE mixture_module, ONLY: beta , beta_old, beta_new
     USE mixture_module, ONLY: Ri
     USE current_module, ONLY: r, r0, r_old, r_new, u, h_old, h_new, h,T
@@ -130,15 +129,12 @@ CONTAINS
     b4_RK(4) = 13525.d0 / 55296.d0
     b4_RK(5) = 277.d0 / 14336.d0
     b4_RK(6) = 1.d0 / 4.d0
- 
     !
     ! ... Set initial conditions at initial radius
     !
     CALL initialize_current
-    !CALL initialize_particles
     !
     ! ... Get meteorological variables
-    CALL gasvals
     CALL zmet
     CALL compute_mixture
     !
@@ -156,12 +152,6 @@ CONTAINS
     f_oldold = f
 
     main_loop: DO
-
-       ! move one step back to get the terms needed to evaluate dbeta_dr and dh_dr:
-       ! dbeta_dr = ( beta_new - beta_old ) / ( r_new - r_old)
-       ! dh_dr = ( h_new - h_old ) / ( h_new - h_old )
-       !
-       ! These terms are evaluated in the subroutine rate
 
        r = r - dr_old
        CALL unlump(f_oldold)
@@ -272,7 +262,7 @@ CONTAINS
 
           dr_old = dr
 
-          ! che the error 4th-5th and compute the adaptive step
+          ! check the error 4th-5th and compute the adaptive step
           f_err(:) = dr * ( rhs(:) - rhs4(:) )
           
           err_check = MAXVAL( ABS(f_err) / ( eps_abs + eps_rel * ABS(f) ) )
@@ -294,15 +284,11 @@ CONTAINS
        
           IF ( ri_new < 1.d0 ) THEN
 
-               !WRITE(*,*) 'supercritical'
-          
-               flow_regime = 1
+               flow_regime = 1 !< flow regime supercritical
           
           ELSE
           
-               !WRITE(*,*) 'subcritical'
-          
-               flow_regime = 2
+               flow_regime = 2 !< flow regime subcritica
           
            END IF
           

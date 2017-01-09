@@ -12,7 +12,6 @@ bindir=@bindir@
 AshFlow_SOURCES = \
 		tools.f90 \
         current.f90 \
-        gas.f90 \
         environment.f90 \
         particles.f90 \
         mixture.f90 \
