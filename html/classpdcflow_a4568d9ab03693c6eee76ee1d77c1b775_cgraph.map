@@ -1,14 +1,13 @@
 <map id="pdcflow::pdc" name="pdcflow::pdc">
 <area shape="rect" id="node2" href="$classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9" title="Meteorological conditions This subroutine is used to calculate atmospheric density, alpha. " alt="" coords="171,5,303,32"/>
-<area shape="rect" id="node3" href="$classgas__module.html#a9b75fbbabef0e471f9310440dd78cc9f" title="Atmospheric consitions This subroutine is used to calculate assign the gas conditions. " alt="" coords="165,56,310,83"/>
-<area shape="rect" id="node4" href="$classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8" title="Initialising current This subroutine allocates conditions at flow source to those assigned in input f..." alt="" coords="154,107,321,149"/>
-<area shape="rect" id="node5" href="$classmixture__module.html#a6497ac62ace51013ef801792b72889bb" title="Computing conditions within mixture This subroutine calculates the characteristics of the mixture by ..." alt="" coords="374,282,546,323"/>
-<area shape="rect" id="node6" href="$classparticles__module.html#a629e094ac337ae71923a60ab01b1167c" title="Allocating particles variables This subroutine allocates the variables defining the particle sediment..." alt="" coords="150,173,325,214"/>
-<area shape="rect" id="node8" href="$classsolver__module.html#ab4854a8322c3b3d35d31bc3748ec106a" title="Right hand side equations This subroutine contains the right&#45;hand side of the equations that are comp..." alt="" coords="169,289,305,316"/>
-<area shape="rect" id="node9" href="$classsolver__module.html#ab957f6304ece7b236bef65f38d1a6797" title="Lump variables Variables are grouped together to calculate the lumped variables. " alt="" coords="166,340,309,367"/>
-<area shape="rect" id="node10" href="$classsolver__module.html#a4aeced542fad1a19662a1d88d8387371" title="Unlumping variable Lumped variables defined in subroutine &#39;lump&#39; are unlumped to calculate physical v..." alt="" coords="159,391,315,417"/>
-<area shape="rect" id="node11" href="$classsolver__module.html#a8833a3496f7aa44198011ef4de2f98dd" title="Marching r one step. " alt="" coords="154,441,321,468"/>
-<area shape="rect" id="node12" href="$classinpout.html#a702497f307e0583fba0596a0c922e2b8" title="inpout::write_output" alt="" coords="169,492,305,519"/>
-<area shape="rect" id="node13" href="$classinpout.html#ad35f318390b607b46e6983b08bf42b29" title="inpout::write_dakota" alt="" coords="168,543,307,569"/>
-<area shape="rect" id="node7" href="$classparticles__module.html#aa639871d0e04410b3cadb75077bafe20" title="Defining cumulative density function of particle size. " alt="" coords="387,180,533,207"/>
+<area shape="rect" id="node3" href="$classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8" title="Initialising current This subroutine allocates conditions at flow source to those assigned in input f..." alt="" coords="154,57,321,98"/>
+<area shape="rect" id="node4" href="$classmixture__module.html#a6497ac62ace51013ef801792b72889bb" title="Computing conditions within mixture This subroutine calculates the characteristics of the mixture by ..." alt="" coords="374,231,546,273"/>
+<area shape="rect" id="node5" href="$classparticles__module.html#a629e094ac337ae71923a60ab01b1167c" title="Allocating particles variables This subroutine allocates the variables defining the particle sediment..." alt="" coords="150,122,325,163"/>
+<area shape="rect" id="node7" href="$classsolver__module.html#ab4854a8322c3b3d35d31bc3748ec106a" title="Right hand side equations This subroutine contains the right&#45;hand side of the equations that are comp..." alt="" coords="169,239,305,265"/>
+<area shape="rect" id="node8" href="$classsolver__module.html#ab957f6304ece7b236bef65f38d1a6797" title="Lump variables Variables are grouped together to calculate the lumped variables. " alt="" coords="166,289,309,316"/>
+<area shape="rect" id="node9" href="$classsolver__module.html#a4aeced542fad1a19662a1d88d8387371" title="Unlumping variable Lumped variables defined in subroutine &#39;lump&#39; are unlumped to calculate physical v..." alt="" coords="159,340,315,367"/>
+<area shape="rect" id="node10" href="$classsolver__module.html#a8833a3496f7aa44198011ef4de2f98dd" title="Marching r one step. " alt="" coords="154,391,321,417"/>
+<area shape="rect" id="node11" href="$classinpout.html#a702497f307e0583fba0596a0c922e2b8" title="inpout::write_output" alt="" coords="169,441,305,468"/>
+<area shape="rect" id="node12" href="$classinpout.html#ad35f318390b607b46e6983b08bf42b29" title="inpout::write_dakota" alt="" coords="168,492,307,519"/>
+<area shape="rect" id="node6" href="$classparticles__module.html#aa639871d0e04410b3cadb75077bafe20" title="Defining cumulative density function of particle size. " alt="" coords="387,129,533,156"/>
 </map>

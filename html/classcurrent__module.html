@@ -133,7 +133,7 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:abfd794ca0e6c8cb04cd31c8940af2e07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial thickness of flow (m) provided in input file.  <a href="#abfd794ca0e6c8cb04cd31c8940af2e07">More...</a><br /></td></tr>
 <tr class="separator:abfd794ca0e6c8cb04cd31c8940af2e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5abda21807a869db05115c0ea07229a6"><td class="memItemLeft" align="right" valign="top">real *8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcurrent__module.html#a5abda21807a869db05115c0ea07229a6">r0</a></td></tr>
-<tr class="memdesc:a5abda21807a869db05115c0ea07229a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial flow velocity (m/s) provided in input file.  <a href="#a5abda21807a869db05115c0ea07229a6">More...</a><br /></td></tr>
+<tr class="memdesc:a5abda21807a869db05115c0ea07229a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initial flow radius (m) provided in input file.  <a href="#a5abda21807a869db05115c0ea07229a6">More...</a><br /></td></tr>
 <tr class="separator:a5abda21807a869db05115c0ea07229a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04da35dd3990f46f271e428f2c507105"><td class="memItemLeft" align="right" valign="top">real *8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcurrent__module.html#a04da35dd3990f46f271e428f2c507105">solid_mass_flux</a></td></tr>
 <tr class="memdesc:a04da35dd3990f46f271e428f2c507105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mass mass flux of solids in the flow.  <a href="#a04da35dd3990f46f271e428f2c507105">More...</a><br /></td></tr>
@@ -144,9 +144,6 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ade068c4944317ab9126caf8c70001f28"><td class="memItemLeft" align="right" valign="top">logical&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcurrent__module.html#ade068c4944317ab9126caf8c70001f28">tvent_flag</a></td></tr>
 <tr class="memdesc:ade068c4944317ab9126caf8c70001f28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical flag describing how the initial temperature is determined, true means given in input, if false, calculated in mixture.  <a href="#ade068c4944317ab9126caf8c70001f28">More...</a><br /></td></tr>
 <tr class="separator:ade068c4944317ab9126caf8c70001f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a390ee9a697e6d7ccc4a054033cd31825"><td class="memItemLeft" align="right" valign="top">logical&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcurrent__module.html#a390ee9a697e6d7ccc4a054033cd31825">mars_atm</a></td></tr>
-<tr class="memdesc:a390ee9a697e6d7ccc4a054033cd31825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical flag describing how the initial temperature is determined, true means given in input, if false, calculated in mixture.  <a href="#a390ee9a697e6d7ccc4a054033cd31825">More...</a><br /></td></tr>
-<tr class="separator:a390ee9a697e6d7ccc4a054033cd31825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18065ccae69d30f732e678e0cab9c733"><td class="memItemLeft" align="right" valign="top">real *8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcurrent__module.html#a18065ccae69d30f732e678e0cab9c733">mass_flux</a></td></tr>
 <tr class="memdesc:a18065ccae69d30f732e678e0cab9c733"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mass flux.  <a href="#a18065ccae69d30f732e678e0cab9c733">More...</a><br /></td></tr>
 <tr class="separator:a18065ccae69d30f732e678e0cab9c733"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,7 +177,7 @@ Public Attributes</h2></td></tr>
 
 <p>Initialising current This subroutine allocates conditions at flow source to those assigned in input file. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00083">83</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00076">76</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -222,7 +219,7 @@ Here is the caller graph for this function:</div>
 
 <p>Initial thickness of flow (m) provided in input file. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00041">41</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00040">40</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -270,23 +267,7 @@ Here is the caller graph for this function:</div>
 
 <p>Initial Mass Flux. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00068">68</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a390ee9a697e6d7ccc4a054033cd31825"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">logical current_module::mars_atm</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Logical flag describing how the initial temperature is determined, true means given in input, if false, calculated in mixture. </p>
-
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00059">59</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00061">61</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -302,7 +283,7 @@ Here is the caller graph for this function:</div>
 
 <p>Mass flux. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00062">62</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00055">55</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -334,7 +315,7 @@ Here is the caller graph for this function:</div>
 
 <p>Initial velocity for coignimbrite plume calculated using current mass flux. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00065">65</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00058">58</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -364,10 +345,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Initial flow velocity (m/s) provided in input file. </p>
-<p>Initial flow radius (m) provided in input file initial radius of flow </p>
+<p>Initial flow radius (m) provided in input file. </p>
+<p>initial radius of flow </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00047">47</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00043">43</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -415,7 +396,7 @@ Here is the caller graph for this function:</div>
 
 <p>Mass mass flux of solids in the flow. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00050">50</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00046">46</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -431,7 +412,7 @@ Here is the caller graph for this function:</div>
 
 <p>Ratio of Final Mass Flux to Initial Mass Flux. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00071">71</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00064">64</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -463,7 +444,7 @@ Here is the caller graph for this function:</div>
 
 <p>Initial flow temperature (K) provided in input file. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00053">53</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00049">49</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -479,7 +460,7 @@ Here is the caller graph for this function:</div>
 
 <p>Logical flag describing how the initial temperature is determined, true means given in input, if false, calculated in mixture. </p>
 
-<p>Definition at line <a class="el" href="current_8f90_source.html#l00056">56</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
+<p>Definition at line <a class="el" href="current_8f90_source.html#l00052">52</a> of file <a class="el" href="current_8f90_source.html">current.f90</a>.</p>
 
 </div>
 </div>
@@ -505,7 +486,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 5 2017 11:53:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2017 11:30:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

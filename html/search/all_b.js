@@ -1,7 +1,6 @@
 var searchData=
 [
   ['marching',['marching',['../classsolver__module.html#a8833a3496f7aa44198011ef4de2f98dd',1,'solver_module']]],
-  ['mars_5fatm',['mars_atm',['../classcurrent__module.html#a390ee9a697e6d7ccc4a054033cd31825',1,'current_module']]],
   ['mass_5fflux',['mass_flux',['../classcurrent__module.html#a18065ccae69d30f732e678e0cab9c733',1,'current_module']]],
   ['max_5fphi',['max_phi',['../classparticles__module.html#ad184d632e44778bfb38a8caa1464c1b3',1,'particles_module']]],
   ['max_5frho',['max_rho',['../classparticles__module.html#a82d7ff6a4c31c5d28dd9e63160083b72',1,'particles_module']]],

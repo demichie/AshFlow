@@ -163,143 +163,139 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    n = <span class="keyword">SIZE</span>( f,2 )</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">!    WRITE(*,*) &#39;tools,interp1D&#39;,x,n</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">!***  x is equal or lower than the first point </span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">!***  x is equal or lower than the first point </span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">IF</span> ( x .LE. f(1,1) ) <span class="keywordflow">THEN</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;       getfx = f(2,1)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;       <span class="keywordflow">RETURN</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">IF</span> ( x .LE. f(1,1) ) <span class="keywordflow">THEN</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;       getfx = f(2,1)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;       <span class="keywordflow">RETURN</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">END IF</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">END IF</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">!***  x is equal or greater than the last point </span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">!***  x is equal or greater than the last point </span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">IF</span> ( x .GE. f(1,n) ) <span class="keywordflow">THEN</span></div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">IF</span> ( x .GE. f(1,n) ) <span class="keywordflow">THEN</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;       getfx = f(2,n)</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;       <span class="keywordflow">RETURN</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;       getfx = f(2,n)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;       <span class="keywordflow">RETURN</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">END IF</span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">END IF</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">!***  x lies between the first and the second point. Interpolate</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">!***  using a second order forward</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">!***  x lies between the first and the second point. Interpolate</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">!***  using a second order forward</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">IF</span> ( ( x .GT. f(1,1) ) .AND. ( x .LE. f(1,2) ) ) <span class="keywordflow">THEN</span></div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">IF</span> ( ( x .GT. f(1,1) ) .AND. ( x .LE. f(1,2) ) ) <span class="keywordflow">THEN</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;       x0 = f(1,1)</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;       f0 = f(2,1)</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;       x1 = f(1,2)</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;       f1 = f(2,2)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;       f2 = f(2,3)</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;       u = (x-x0)/(x1-x0)</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;       getfx = f0 + u*(f1-f0)+ 0.5d0*u*(u-1)*(f2-2.d0*f1+f0)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;       x0 = f(1,1)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;       f0 = f(2,1)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;       x1 = f(1,2)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;       f1 = f(2,2)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;       f2 = f(2,3)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;       u = (x-x0)/(x1-x0)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;       getfx = f0 + u*(f1-f0)+ 0.5d0*u*(u-1)*(f2-2.d0*f1+f0)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;       <span class="keywordflow">RETURN</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;       <span class="keywordflow">RETURN</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">END IF</span></div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">END IF</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">!***  For the rest of points, search and interpolate using a second</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">!***  order centred </span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">!***  For the rest of points, search and interpolate using a second</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="comment">!***  order centred </span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    search = .true.</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    search = .true.</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    i = 1</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    i = 1</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">DO</span> <span class="keywordflow">WHILE</span> (search)</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">DO</span> <span class="keywordflow">WHILE</span> (search)</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;       <span class="comment">!       WRITE(*,*) i,x,x0,x1</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;       i  = i+1</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;       x0 = f(1,i  )</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;       x1 = f(1,i+1)</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;       i  = i+1</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;       x0 = f(1,i  )</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;       x1 = f(1,i+1)</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;       <span class="keywordflow">IF</span> ( ( x .GT. x0 ) .AND. ( x .LE. x1 ) ) <span class="keywordflow">THEN</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;          f0  = f(2,i  )</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;          f1  = f(2,i+1)</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;          f_1 = f(2,i-1)</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;          search = .false.</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;       <span class="keywordflow">IF</span> ( ( x .GT. x0 ) .AND. ( x .LE. x1 ) ) <span class="keywordflow">THEN</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;          f0  = f(2,i  )</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;          f1  = f(2,i+1)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;          f_1 = f(2,i-1)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;          search = .false.</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;       <span class="keywordflow">END IF</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">END DO</span></div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;       <span class="keywordflow">END IF</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">END DO</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    u     = (x-x0)/(x1-x0)</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    getfx = f0 + 0.5d0*u*(f1-f_1)+ 0.5d0*u*u*(f1-2.d0*f0+f_1)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    u     = (x-x0)/(x1-x0)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    getfx = f0 + 0.5d0*u*(f1-f_1)+ 0.5d0*u*u*(f1-2.d0*f0+f_1)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">RETURN</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">  END SUBROUTINE </span><a class="code" href="classtools.html#a9e113bfa374ac06d19381ca951b96cca">interp1d</a></div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">RETURN</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">  END SUBROUTINE </span><a class="code" href="classtools.html#a9e113bfa374ac06d19381ca951b96cca">interp1d</a></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="comment">!*************************************************************************</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="comment">!</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="comment">!***************************************************************************  </span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="comment">!*************************************************************************</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="comment">!</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="comment">!***************************************************************************  </span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="classtools.html#a27c2dcb27ee048a53284a180a531db78">  189</a></span>&#160;<span class="keyword">  SUBROUTINE </span><a class="code" href="classtools.html#a27c2dcb27ee048a53284a180a531db78">dfdx</a>(f,df,n)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordtype">IMPLICIT NONE</span></div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="classtools.html#a27c2dcb27ee048a53284a180a531db78">  193</a></span>&#160;<span class="keyword">  SUBROUTINE </span><a class="code" href="classtools.html#a27c2dcb27ee048a53284a180a531db78">dfdx</a>(f,df,n)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">IMPLICIT NONE</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">INTEGER</span>, <span class="keywordtype">INTENT(IN)</span> :: n</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">REAL*8</span>, <span class="keywordtype">INTENT(IN)</span>  :: f(2,n)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">REAL*8</span>, <span class="keywordtype">INTENT(OUT)</span> :: df(2,n)</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">INTEGER</span>, <span class="keywordtype">INTENT(IN)</span> :: n</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordtype">REAL*8</span>, <span class="keywordtype">INTENT(IN)</span>  :: f(2,n)</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordtype">REAL*8</span>, <span class="keywordtype">INTENT(OUT)</span> :: df(2,n)</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">!*** local variables</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordtype">INTEGER</span> :: i</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment">!*** local variables</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">INTEGER</span> :: i</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="comment">!***  Set the seme base points</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="comment">!</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="comment">!***  Set the seme base points</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">DO</span> i=1,n</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;       df(1,i) = f(1,i)</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">DO</span> i=1,n</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">END DO</span></div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;       df(1,i) = f(1,i)</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">END DO</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment">!***  First point (i=1). Second order forward approximation</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    df(2,1) = (-f(2,3)+4.d0*f(2,2)-3.0d0*f(2,1))/(f(1,3)-f(1,1))</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">!***  Last point  (i=n). Second order backward approximation.</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    df(2,n) = (3.d0*f(2,n)-4.d0*f(2,n-1)+f(2,n-2))/(f(1,n)-f(1,n-2))</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">!***  First point (i=1). Second order forward approximation</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    df(2,1) = (-f(2,3)+4.d0*f(2,2)-3.0d0*f(2,1))/(f(1,3)-f(1,1))</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment">!***  Last point  (i=n). Second order backward approximation.</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    df(2,n) = (3.d0*f(2,n)-4.d0*f(2,n-1)+f(2,n-2))/(f(1,n)-f(1,n-2))</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">!***  Central points. Second order centred.</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">!</span></div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="comment">!***  Central points. Second order centred.</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">DO</span> i = 2,n-1</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;       df(2,i) = (f(2,i+1)-f(2,i-1))/(f(1,i+1)-f(1,i-1)) </div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">DO</span> i = 2,n-1</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">END DO</span></div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;       df(2,i) = (f(2,i+1)-f(2,i-1))/(f(1,i+1)-f(1,i-1)) </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">RETURN</span></div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">END DO</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keyword">  END SUBROUTINE </span><a class="code" href="classtools.html#a27c2dcb27ee048a53284a180a531db78">dfdx</a></div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">RETURN</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="keyword">  END SUBROUTINE </span><a class="code" href="classtools.html#a27c2dcb27ee048a53284a180a531db78">dfdx</a></div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keyword">END MODULE </span><a class="code" href="classtools.html">tools</a></div>
-<div class="ttc" id="classtools_html_a27c2dcb27ee048a53284a180a531db78"><div class="ttname"><a href="classtools.html#a27c2dcb27ee048a53284a180a531db78">tools::dfdx</a></div><div class="ttdeci">subroutine dfdx(f, df, n)</div><div class="ttdoc">Function Derivative. </div><div class="ttdef"><b>Definition:</b> <a href="tools_8f90_source.html#l00193">tools.f90:193</a></div></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="keyword">END MODULE </span><a class="code" href="classtools.html">tools</a></div>
+<div class="ttc" id="classtools_html_a27c2dcb27ee048a53284a180a531db78"><div class="ttname"><a href="classtools.html#a27c2dcb27ee048a53284a180a531db78">tools::dfdx</a></div><div class="ttdeci">subroutine dfdx(f, df, n)</div><div class="ttdoc">Function Derivative. </div><div class="ttdef"><b>Definition:</b> <a href="tools_8f90_source.html#l00189">tools.f90:189</a></div></div>
 <div class="ttc" id="classtools_html_a9e113bfa374ac06d19381ca951b96cca"><div class="ttname"><a href="classtools.html#a9e113bfa374ac06d19381ca951b96cca">tools::interp1d</a></div><div class="ttdeci">subroutine interp1d(getfx, f, x)</div><div class="ttdoc">1D Interpolation </div><div class="ttdef"><b>Definition:</b> <a href="tools_8f90_source.html#l00079">tools.f90:79</a></div></div>
 <div class="ttc" id="classtools_html"><div class="ttname"><a href="classtools.html">tools</a></div><div class="ttdoc">Tools. </div><div class="ttdef"><b>Definition:</b> <a href="tools_8f90_source.html#l00005">tools.f90:5</a></div></div>
 <div class="ttc" id="classtools_html_a60f2dce004ef7a8e8e5b07e012e5b5ec"><div class="ttname"><a href="classtools.html#a60f2dce004ef7a8e8e5b07e012e5b5ec">tools::runend</a></div><div class="ttdeci">subroutine runend(iflag, message)</div><div class="ttdoc">Program end. </div><div class="ttdef"><b>Definition:</b> <a href="tools_8f90_source.html#l00023">tools.f90:23</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 5 2017 11:53:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2017 11:30:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

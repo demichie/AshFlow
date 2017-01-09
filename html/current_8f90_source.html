@@ -114,56 +114,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a426cd9b8b1cb3bc2fb4578af7304881d">   34</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: h_old</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  </div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a07c06a7efb16bd9774db77f511389167">   37</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: h_new</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="comment">!</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classcurrent__module.html#abfd794ca0e6c8cb04cd31c8940af2e07">   41</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: h0                                  </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">!REAL*8 :: u0                                 !&lt; initial velocity of flow - given in input file</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a5abda21807a869db05115c0ea07229a6">   47</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: r0</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a04da35dd3990f46f271e428f2c507105">   50</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: solid_mass_flux </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a506fee66e6d53dfbd632bd75301b4ff4">   53</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: T0</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classcurrent__module.html#ade068c4944317ab9126caf8c70001f28">   56</a></span>&#160;  <span class="keywordtype">LOGICAL</span> :: TVENT_FLAG </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a390ee9a697e6d7ccc4a054033cd31825">   59</a></span>&#160;  <span class="keywordtype">LOGICAL</span> :: MARS_ATM</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a18065ccae69d30f732e678e0cab9c733">   62</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: mass_flux</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classcurrent__module.html#aab6f11a94860982836515fe845247a42">   65</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: plume_velocity</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classcurrent__module.html#aca95e21dd5794bf02ea276a97652ed82">   68</a></span>&#160;  <span class="keywordtype">Real*8</span> :: Initial_MF</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a55c3156963ed8b2c6073545670d1a47d">   71</a></span>&#160;  <span class="keywordtype">Real*8</span> ::solidMF_ratio</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment">!</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">SAVE</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="comment">!----------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">CONTAINS</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">!******************************************************************************</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">!******************************************************************************</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8">   83</a></span>&#160;<span class="keyword">  SUBROUTINE </span><a class="code" href="classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8">initialize_current</a></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">IMPLICIT NONE</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">!     </span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    h = h0</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    r = r0</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">!</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">RETURN</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">  END SUBROUTINE </span><a class="code" href="classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8">initialize_current</a></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">!----------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">END MODULE </span><a class="code" href="classcurrent__module.html">current_module</a></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">!----------------------------------------------------------------------</span></div>
-<div class="ttc" id="classcurrent__module_html_a2fa731e8fd845cc332f161dd2e537fe8"><div class="ttname"><a href="classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8">current_module::initialize_current</a></div><div class="ttdeci">subroutine initialize_current</div><div class="ttdoc">Initialising current This subroutine allocates conditions at flow source to those assigned in input f...</div><div class="ttdef"><b>Definition:</b> <a href="current_8f90_source.html#l00083">current.f90:83</a></div></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classcurrent__module.html#abfd794ca0e6c8cb04cd31c8940af2e07">   40</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: h0                                  </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a5abda21807a869db05115c0ea07229a6">   43</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: r0</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a04da35dd3990f46f271e428f2c507105">   46</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: solid_mass_flux </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a506fee66e6d53dfbd632bd75301b4ff4">   49</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: T0</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classcurrent__module.html#ade068c4944317ab9126caf8c70001f28">   52</a></span>&#160;  <span class="keywordtype">LOGICAL</span> :: TVENT_FLAG </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a18065ccae69d30f732e678e0cab9c733">   55</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: mass_flux</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classcurrent__module.html#aab6f11a94860982836515fe845247a42">   58</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: plume_velocity</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classcurrent__module.html#aca95e21dd5794bf02ea276a97652ed82">   61</a></span>&#160;  <span class="keywordtype">Real*8</span> :: Initial_MF</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a55c3156963ed8b2c6073545670d1a47d">   64</a></span>&#160;  <span class="keywordtype">Real*8</span> ::solidMF_ratio</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">!</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">SAVE</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">!----------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">CONTAINS</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">!******************************************************************************</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">!******************************************************************************</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8">   76</a></span>&#160;<span class="keyword">  SUBROUTINE </span><a class="code" href="classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8">initialize_current</a></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">IMPLICIT NONE</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">!     </span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    h = h0</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    r = r0</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">!</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">RETURN</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">  END SUBROUTINE </span><a class="code" href="classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8">initialize_current</a></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="comment">!----------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">END MODULE </span><a class="code" href="classcurrent__module.html">current_module</a></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">!----------------------------------------------------------------------</span></div>
+<div class="ttc" id="classcurrent__module_html_a2fa731e8fd845cc332f161dd2e537fe8"><div class="ttname"><a href="classcurrent__module.html#a2fa731e8fd845cc332f161dd2e537fe8">current_module::initialize_current</a></div><div class="ttdeci">subroutine initialize_current</div><div class="ttdoc">Initialising current This subroutine allocates conditions at flow source to those assigned in input f...</div><div class="ttdef"><b>Definition:</b> <a href="current_8f90_source.html#l00076">current.f90:76</a></div></div>
 <div class="ttc" id="classcurrent__module_html"><div class="ttname"><a href="classcurrent__module.html">current_module</a></div><div class="ttdoc">Current module This module contains descriptors for the initial conditions of the flow...</div><div class="ttdef"><b>Definition:</b> <a href="current_8f90_source.html#l00007">current.f90:7</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 5 2017 11:53:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2017 11:30:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

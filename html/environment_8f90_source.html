@@ -105,62 +105,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classenvi__module.html#a30fbd8bcc59bc6801fee1e6de0d3667b">   18</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: alpha</div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classenvi__module.html#a219819e68b9b496b684bb9da09fde858">   19</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: T_a</div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classenvi__module.html#afb486794df97a6c82baef7f00781f838">   20</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: p</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">!</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">SAVE</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">CONTAINS</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classenvi__module.html#a7e2ff434321a2fca5d3bc09aae9c151a">   21</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: gas_constair</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classenvi__module.html#a7fc84b4219979c085a905b002ffa2995">   22</a></span>&#160;  <span class="keywordtype">REAL*8</span> :: C_vair</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="comment">!</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">SAVE</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">!******************************************************************************</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">!******************************************************************************</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9">   31</a></span>&#160;<span class="keyword">  SUBROUTINE </span><a class="code" href="classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9">zmet</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">CONTAINS</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">!******************************************************************************</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">!******************************************************************************</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">! External variables</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">USE </span><a class="code" href="classgas__module.html">gas_module</a><span class="keywordtype">, ONLY</span>: gas_constair</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">USE </span><a class="code" href="classcurrent__module.html">current_module</a><span class="keywordtype">, ONLY</span>: mars_atm</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;       </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">IMPLICIT NONE</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">IF</span> (mars_atm) <span class="keywordflow">THEN</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9">   33</a></span>&#160;<span class="keyword">  SUBROUTINE </span><a class="code" href="classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9">zmet</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;       </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">IMPLICIT NONE</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    alpha = p/(gas_constair*t_a)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">RETURN</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;       <span class="comment">!gi = 3.711D0</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;       <span class="comment">!T_a = 237.D0</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;       <span class="comment">!p = 636.D0</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;       <span class="comment">!alpha = 0.0168D0</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;       </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">! Ancient Mars</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;       gi = 3.711d0</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;       t_a = 288.d0</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;       p = 20000.d0      </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;       alpha = 0.4d0</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;       </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">ELSE</span>   </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">! Earth conditions</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;       gi = 9.81d0</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;       t_a = 288.d0</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;       p = 100000.d0</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;       alpha = p/(gas_constair*t_a) </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;       </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;       <span class="comment">!WRITE(*,*) &#39;gi, ta, p, alpha, gas_constair&#39;,        gi, T_a, p, alpha, gas_constair</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;       <span class="comment">!READ(*,*)</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;       </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">END IF</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">RETURN</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">  END SUBROUTINE </span><a class="code" href="classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9">zmet</a></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">END MODULE </span><a class="code" href="classenvi__module.html">envi_module</a></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="ttc" id="classgas__module_html"><div class="ttname"><a href="classgas__module.html">gas_module</a></div><div class="ttdoc">gas module This module contains values for gas constant and specific heat of ambient air and water va...</div><div class="ttdef"><b>Definition:</b> <a href="gas_8f90_source.html#l00026">gas.f90:26</a></div></div>
-<div class="ttc" id="classcurrent__module_html"><div class="ttname"><a href="classcurrent__module.html">current_module</a></div><div class="ttdoc">Current module This module contains descriptors for the initial conditions of the flow...</div><div class="ttdef"><b>Definition:</b> <a href="current_8f90_source.html#l00007">current.f90:7</a></div></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">  END SUBROUTINE </span><a class="code" href="classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9">zmet</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">END MODULE </span><a class="code" href="classenvi__module.html">envi_module</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="ttc" id="classenvi__module_html"><div class="ttname"><a href="classenvi__module.html">envi_module</a></div><div class="ttdoc">environment module This module contains all the variables related to the background environmental con...</div><div class="ttdef"><b>Definition:</b> <a href="environment_8f90_source.html#l00008">environment.f90:8</a></div></div>
-<div class="ttc" id="classenvi__module_html_a8213482632e5bac7fd67a29da51ba9d9"><div class="ttname"><a href="classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9">envi_module::zmet</a></div><div class="ttdeci">subroutine zmet</div><div class="ttdoc">Meteorological conditions This subroutine is used to calculate atmospheric density, alpha. </div><div class="ttdef"><b>Definition:</b> <a href="environment_8f90_source.html#l00031">environment.f90:31</a></div></div>
+<div class="ttc" id="classenvi__module_html_a8213482632e5bac7fd67a29da51ba9d9"><div class="ttname"><a href="classenvi__module.html#a8213482632e5bac7fd67a29da51ba9d9">envi_module::zmet</a></div><div class="ttdeci">subroutine zmet</div><div class="ttdoc">Meteorological conditions This subroutine is used to calculate atmospheric density, alpha. </div><div class="ttdef"><b>Definition:</b> <a href="environment_8f90_source.html#l00033">environment.f90:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 5 2017 11:53:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2017 11:30:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

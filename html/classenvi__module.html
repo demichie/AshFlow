@@ -120,6 +120,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:afb486794df97a6c82baef7f00781f838"><td class="memItemLeft" align="right" valign="top">real *8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classenvi__module.html#afb486794df97a6c82baef7f00781f838">p</a></td></tr>
 <tr class="memdesc:afb486794df97a6c82baef7f00781f838"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atmospheric pressure.  <a href="#afb486794df97a6c82baef7f00781f838">More...</a><br /></td></tr>
 <tr class="separator:afb486794df97a6c82baef7f00781f838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e2ff434321a2fca5d3bc09aae9c151a"><td class="memItemLeft" align="right" valign="top">real *8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classenvi__module.html#a7e2ff434321a2fca5d3bc09aae9c151a">gas_constair</a></td></tr>
+<tr class="memdesc:a7e2ff434321a2fca5d3bc09aae9c151a"><td class="mdescLeft">&#160;</td><td class="mdescRight">perfect gas constant of ambient air ( J/(kg K) )  <a href="#a7e2ff434321a2fca5d3bc09aae9c151a">More...</a><br /></td></tr>
+<tr class="separator:a7e2ff434321a2fca5d3bc09aae9c151a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fc84b4219979c085a905b002ffa2995"><td class="memItemLeft" align="right" valign="top">real *8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classenvi__module.html#a7fc84b4219979c085a905b002ffa2995">c_vair</a></td></tr>
+<tr class="memdesc:a7fc84b4219979c085a905b002ffa2995"><td class="mdescLeft">&#160;</td><td class="mdescRight">specific heat ambient air ( J/(kg K) )  <a href="#a7fc84b4219979c085a905b002ffa2995">More...</a><br /></td></tr>
+<tr class="separator:a7fc84b4219979c085a905b002ffa2995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>environment module This module contains all the variables related to the background environmental conditions, e.g. atmospheric conditions where h = 0 and the topography descriptors- </p>
@@ -141,7 +147,7 @@ Public Attributes</h2></td></tr>
 
 <p>Meteorological conditions This subroutine is used to calculate atmospheric density, alpha. </p>
 
-<p>Definition at line <a class="el" href="environment_8f90_source.html#l00031">31</a> of file <a class="el" href="environment_8f90_source.html">environment.f90</a>.</p>
+<p>Definition at line <a class="el" href="environment_8f90_source.html#l00033">33</a> of file <a class="el" href="environment_8f90_source.html">environment.f90</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -171,6 +177,22 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="a7fc84b4219979c085a905b002ffa2995"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">real*8 envi_module::c_vair</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>specific heat ambient air ( J/(kg K) ) </p>
+
+<p>Definition at line <a class="el" href="environment_8f90_source.html#l00022">22</a> of file <a class="el" href="environment_8f90_source.html">environment.f90</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a24f6d7093fa8e4400cdf3e812c7ac133"></a>
 <div class="memitem">
 <div class="memproto">
@@ -184,6 +206,22 @@ Here is the caller graph for this function:</div>
 <p>Friction param. describing relation between flow and ground. </p>
 
 <p>Definition at line <a class="el" href="environment_8f90_source.html#l00014">14</a> of file <a class="el" href="environment_8f90_source.html">environment.f90</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7e2ff434321a2fca5d3bc09aae9c151a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">real*8 envi_module::gas_constair</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>perfect gas constant of ambient air ( J/(kg K) ) </p>
+
+<p>Definition at line <a class="el" href="environment_8f90_source.html#l00021">21</a> of file <a class="el" href="environment_8f90_source.html">environment.f90</a>.</p>
 
 </div>
 </div>
@@ -257,7 +295,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 5 2017 11:53:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 9 2017 11:30:33 for AshFlow by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
