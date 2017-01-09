@@ -23,7 +23,7 @@ AshFlow_SOURCES = \
 FCFLAGS         = -g -O3 -ffast-math
 FCDEBUGFLAGS    = -Wall -g
 
-LIBS            = -lz -lm -llapack
+LIBS            = -lz -lm
 
 FC              = gfortran
 MPFC            = gfortran
