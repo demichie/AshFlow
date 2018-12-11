@@ -1,9 +1,9 @@
 !********************************************************************************
 !> \brief Solver Module
-!> This module contains the differential equations that are solved at each 
+!> This module contains the differential equations that are solved at each
 !> iteration.
 !> \date 01/07/2014
-!> @author 
+!> @author
 !> Sam & Mattia
 !********************************************************************************
 
@@ -51,10 +51,10 @@ CONTAINS
 
   !******************************************************************************
   !> \brief Allocate matrix
-  !> This subroutine defines the matrix over which each of the conditions are 
+  !> This subroutine defines the matrix over which each of the conditions are
   !> solved.
   !> \date 01/07/2014
-  !> @author 
+  !> @author
   !> Sam & Mattia
   !******************************************************************************
 
@@ -68,12 +68,12 @@ CONTAINS
 
     ALLOCATE(rhstemp(itotal))
     ALLOCATE(rhs(itotal))
-    ALLOCATE(ftemp(itotal)) 
-    ALLOCATE(f(itotal)) 
-    ALLOCATE(f_stepold(itotal))   
+    ALLOCATE(ftemp(itotal))
+    ALLOCATE(f(itotal))
+    ALLOCATE(f_stepold(itotal))
 
-    ALLOCATE(f_new(itotal))   
-    ALLOCATE(f_RK(itotal))   
+    ALLOCATE(f_new(itotal))
+    ALLOCATE(f_RK(itotal))
     ALLOCATE(rhs_RK(n_RK,itotal))
     ALLOCATE(rhs4(itotal))
     ALLOCATE(f_err(itotal))
@@ -88,11 +88,11 @@ CONTAINS
 
   !*****************************************************************************
   !> \brief Right hand side equations
-  !> This subroutine contains the right-hand side of the equations 
+  !> This subroutine contains the right-hand side of the equations
   !> that are computed for each particle class
   !> \param[out]    rhs_     right-hand side
   !> \date 01/07/2014
-  !> @author 
+  !> @author
   !> Sam & Mattia
   !*****************************************************************************
 
@@ -108,7 +108,7 @@ CONTAINS
     REAL*8, DIMENSION(:), INTENT(OUT) :: rhs_
 
     REAL*8 :: var , coeff_radial
-    
+
     REAL*8 :: term1 , term2
 
     REAL*8 :: rhs_2A , rhs_2B
@@ -128,9 +128,9 @@ CONTAINS
 
     END IF
 
-    solid_mass_flux = (beta * u * h * var) * ( 1.D0 - n )  
+    solid_mass_flux = (beta * u * h * var) * ( 1.D0 - n )
     ! provides the mass_flux of a particle of a given size
-    solidmassflux_fract(1:iclass) = solid_mass_flux*fracsolid(1:iclass)  
+    solidmassflux_fract(1:iclass) = solid_mass_flux*fracsolid(1:iclass)
 
     ! SEDIMENTATION for the particle fraction
     v_s(1:iclass) = DSQRT( (rhosol(1:iclass) * gi * diam(1:iclass)) /           &
@@ -139,12 +139,12 @@ CONTAINS
     S(1:iclass) = 1.D0 / (h * u) * solidmassflux_fract(1:iclass) * v_s(1:iclass)
 
     sumsed = SUM(S(1:iclass)) ! sum of sedimentation across all particles sizes
-    
+
     !---- Mass conservation of the mixture   (Eq.1 Bursik & Woods 1996)
 
     entrainment_rate = epsilon * alpha * u * var
     rhs_(1) = entrainment_rate - sumsed
-    
+
     !---- Momentum Conservation (Eq.4 Bursik & Woods 1996)
 
     IF ( r_new .NE. r_old ) THEN
@@ -162,7 +162,7 @@ CONTAINS
     coeff_radial = ( var - 1.D0 ) / ( r - 1.D0 )
 
     no_entr = .FALSE.
-    
+
     const_volume_flux = .FALSE.
 
     IF ( no_entr ) THEN
@@ -170,7 +170,7 @@ CONTAINS
        term1 = 0.D0
 
     ELSE
-       
+
        term1 = - u * epsilon * alpha / ( h * beta )
 
     END IF
@@ -182,24 +182,24 @@ CONTAINS
     ELSE
 
        term2 = - ( epsilon * alpha * u * var - sumsed ) / ( beta * h * var ) *  &
-            dcos(theta) + u / beta * dcos(theta) * dbeta_dr
+              u / beta * dbeta_dr
 
     END IF
 
-    ! RHS term for the modified momentum equation 
-    rhs_2A = ( term1 + Ri * ( term2 + coeff_radial * u / var * dcos(theta) +    &
-         u / h * dsin(theta) - u / ( 2.D0 * ( beta - alpha ) ) * dcos(theta) *  &
-         dbeta_dr ) - fric * u / h ) / ( 1.D0 - Ri * cos(theta) )
+    ! RHS term for the modified momentum equation
+    rhs_2A = ( term1 + Ri * ( term2 + coeff_radial * u / var *    &
+         u / h * dtan(theta) - u / ( 2.D0 * ( beta - alpha ) ) *  &
+         dbeta_dr ) - fric * u / h ) / ( 1.D0 - Ri )
 
     ! RHS term for the original equation
     rhs_2B =  - epsilon * alpha * u / ( beta * h ) + Ri * u / h * ( - dh_dr     &
-         * dcos(theta) + dsin(theta) ) - Ri * u  / ( 2.D0 * ( beta - alpha ))   &
-         * dcos(theta) * dbeta_dr - fric * u / h
+           + dtan(theta) ) - Ri * u  / ( 2.D0 * ( beta - alpha ))   &
+           * dbeta_dr - fric * u / h
 
     IF ( vel_equation ) THEN
 
        rhs_(2) = rhs_2A
-       
+
     ELSE
 
        rhs_(2) = rhs_2B
@@ -209,11 +209,11 @@ CONTAINS
     !---- Thermal Energy Conservation (Eq.5 Bursik & Woods 1996)
 
     rhs_(3) = epsilon * alpha * u * var * (C_vair * T_a + p/alpha) - sumsed *   &
-         C_s * T    
+         C_s * T
 
     !---- Mass average specific heat
     rhs_(4) = ((C_vair - C_vmix) / beta * epsilon * alpha * u * var + (C_s -    &
-         C_vmix) / beta * (-sumsed))/ (u * h * var)    
+         C_vmix) / beta * (-sumsed))/ (u * h * var)
 
     !---- Gas constant of mixture
     rhs_(5) = (gas_constair - gas_constmix) / (beta * n * u * h * var ) *       &
@@ -231,10 +231,10 @@ CONTAINS
 
   !*****************************************************************************
   !> \brief Lump variables
-  !> Variables are grouped together to calculate the lumped variables 
+  !> Variables are grouped together to calculate the lumped variables
   !> \param[out]    f_     lumped variables
   !> \date 01/07/2014
-  !> @author 
+  !> @author
   !> Sam & Mattia
   !*****************************************************************************
 
@@ -271,10 +271,10 @@ CONTAINS
     f_(4) = C_vmix
     f_(5) = gas_constmix
 
-    DO i=1, iclass  
-     
-       f_(5+i) = (beta * u * h * var) * (1-n) * fracsolid(i) 
-   
+    DO i=1, iclass
+
+       f_(5+i) = (beta * u * h * var) * (1-n) * fracsolid(i)
+
     ENDDO
 
     RETURN
@@ -283,13 +283,13 @@ CONTAINS
   !******************************************************************************
   !> \brief Marching r one step
   !
-  !> This subroutine update the solution of the model from r to r+dr as 
+  !> This subroutine update the solution of the model from r to r+dr as
   !> fnew=fold+dr*rate.
   !> \param[in]    fold    old lumped variables
   !> \param[in]    rate     rate of change of the lumped variables
   !> \param[out]   fnew    new lumped variables
   !> \date 01/07/2014
-  !> @author 
+  !> @author
   !> Sam & Mattia
   !*****************************************************************************
 
@@ -313,12 +313,12 @@ CONTAINS
 
   !*****************************************************************************
   !> \brief Unlumping variable
-  !> Lumped variables defined in subroutine 'lump' are unlumped to 
+  !> Lumped variables defined in subroutine 'lump' are unlumped to
   !> calculate physical variables from lumped variables for each particle class
   !> \date 01/07/2014
-  !> @author 
+  !> @author
   !> Sam & Mattia
-  !> \param[in]   f_   lumped variables 
+  !> \param[in]   f_   lumped variables
   !*****************************************************************************
 
   SUBROUTINE unlump(f_)
@@ -347,8 +347,8 @@ CONTAINS
     END IF
 
     u = f_(2)
-    n = 1.D0 - SUM(f_(5+1:5+iclass))/f_(1)    
-    C_vmix = f_(4)    
+    n = 1.D0 - SUM(f_(5+1:5+iclass))/f_(1)
+    C_vmix = f_(4)
     gas_constmix = f_(5)
     fracsolid(1:iclass) = (f_(5+1:5+iclass))/SUM(f_(5+1:5+iclass))
 
@@ -358,13 +358,13 @@ CONTAINS
     C2 = n * gas_constmix / p
     C3 = ( f_(3)/f_(1) - 0.5D0 * u**2 ) / C_vmix
     C4 = - p / C_vmix
-    
+
     beta = ( 1.D0 - C2*C4 ) / ( C2*C3 + C1 )
     T = C4 / beta + C3
 
     h = f_(1) / (beta * u * var)
 
-    Ri = ((beta - alpha) * gi * h) / (beta * u**2.D0) 
+    Ri = ((beta - alpha) * gi * h) / (beta * u**2.D0)
     epsilon = 0.075D0 / DSQRT(1.D0 + (718.D0 * Ri**2.4D0))
 
     RETURN
@@ -372,4 +372,3 @@ CONTAINS
   END SUBROUTINE unlump
 
 END MODULE solver_module
-
